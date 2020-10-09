@@ -1,39 +1,37 @@
-import {
-  ADD_SMURF,
-  DELETE_SMURF,
-  GOT_SMURFS,
-  GET_SMURFS,
-  POSTED_SMURF,
-  POST_SMURF,
-} from "../actions";
+import { GET_SMURFS, GOT_SMURFS, POSTED_SMURF, POST_SMURF } from "../actions";
 
 const initialState = {
-  smurfs: [
-    {
-      name: "Brainey",
-      age: 200,
-      height: "5cm",
-      id: 0,
-    },
-    {
-      name: "Sleepy",
-      age: 100,
-      height: "5cm",
-      id: 0,
-    },
-  ],
+  smurfs: [],
+  loadedSmurfs: false,
+  addedSmurf: {},
+  error: "doenst work",
 };
 
 export const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_SMURFS:
+      return {
+        ...state,
+        loadedSmurfs: true,
+      };
+    case GOT_SMURFS:
+      return {
+        ...state,
+        loadedSmurfs: false,
+        smurfs: action.payload,
+      };
+
     case POST_SMURF:
       console.log("add smurf", action.payload);
       return {
         ...state,
-        smurfs: [
-          ...state.smurfs,
-          { name: action.payload, age: action.payload, height: action.payload },
-        ],
+        loadedSmurfs: true,
+      };
+    case POSTED_SMURF:
+      return {
+        ...state,
+        loadedSmurfs: false,
+        smurfs: action.payload,
       };
 
     default:
