@@ -2,11 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./components/App";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
 import { smurfReducer } from "./reducers/reducer";
+import thunk from "redux-thunk";
 
-const store = createStore(smurfReducer);
+const store = createStore(smurfReducer, applyMiddleware(thunk));
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

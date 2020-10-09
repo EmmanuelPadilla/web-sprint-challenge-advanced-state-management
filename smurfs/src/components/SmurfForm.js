@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addItem } from "../actions";
+import { postSmurfs } from "../actions";
 
-const SmurfForm = () => {
+const SmurfForm = (props) => {
   return (
     <div className="form">
       <form>
@@ -10,9 +10,14 @@ const SmurfForm = () => {
         <input type="text" placeholder="Smurf Height" />
         <input type="text" placeholder="Smurf Age" />
       </form>
-      <button>Add to Village</button>
+      <button
+        className="submit"
+        onClick={() => props.postSmurfs(props.newSmurf)}
+      >
+        Add to Village
+      </button>
     </div>
   );
 };
 
-export default connect(null, { addItem })(SmurfForm);
+export default connect(null, { postSmurfs })(SmurfForm);
