@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./components/App";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { featureReducer } from "./reducers/reducer";
+import { smurfReducer } from "./reducers/reducer";
 
 const store = createStore(smurfReducer);
 
