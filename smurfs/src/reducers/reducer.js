@@ -1,4 +1,11 @@
-import { ADD_SMURF, DELETE_SMURF } from "../actions";
+import {
+  ADD_SMURF,
+  DELETE_SMURF,
+  GOT_SMURFS,
+  GET_SMURFS,
+  POSTED_SMURF,
+  POST_SMURFS,
+} from "../actions";
 
 const initialState = {
   smurfs: [
